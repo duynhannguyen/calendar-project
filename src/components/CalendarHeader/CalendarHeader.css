@@ -1,0 +1,34 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.header-layout {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.today-button {
+  border: 1px solid rgb(167, 163, 163);
+  border-radius: 4px;
+  padding: 10px 24px;
+}
+.today-button:hover {
+  background-color: rgb(205, 204, 204);
+  transition: ease-in;
+  transition-duration: 0.5s;
+}
+.current-month {
+  font-weight: bold;
+  font-size: 20px;
+}
+.arrows-container {
+  border: 1px solid transparent;
+  border-radius: 100%;
+  padding: 8px;
+}
+.arrows-container:hover {
+  background-color: rgb(205, 204, 204);
+  transition: ease-in;
+  transition-duration: 0.5s;
+}

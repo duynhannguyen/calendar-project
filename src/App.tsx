@@ -1,10 +1,10 @@
 import './App.css';
+import Calendar from './components/Calendar/Calendar';
 
 function App() {
   return (
     <>
-      {' '}
-      <h1>hi</h1>{' '}
+      <Calendar />
     </>
   );
 }
