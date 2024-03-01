@@ -1,0 +1,8 @@
+.calendar-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 200px);
+  background-color: rgb(129, 129, 129);
+  gap: 1px;
+  border: 1px solid rgb(129, 129, 129);
+}
