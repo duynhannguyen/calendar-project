@@ -6,6 +6,25 @@
   text-align: center;
   position: relative;
 }
+.not-month-day {
+  background-color: rgb(245, 243, 243);
+  color: rgb(129, 129, 129, 0.4);
+}
+.old-month-day {
+  opacity: 0.8;
+  color: rgb(129, 129, 129, 0.4);
+}
+
+.today {
+  margin: auto;
+  border-radius: 100%;
+  border: 1px solid rgb(94, 165, 200);
+  background-color: rgb(94, 165, 200);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
 .calendar-items:hover .button-add {
   visibility: visible;
 }

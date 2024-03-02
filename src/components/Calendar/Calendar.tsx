@@ -15,6 +15,8 @@ const Calendar = () => {
   const calendarDays = useMemo(() => {
     const firstWeekStart = startOfWeek(startOfMonth(selectedMonth));
     const LastWeekEnd = endOfWeek(endOfMonth(selectedMonth));
+    console.log('firstWeekStart', firstWeekStart);
+    console.log('LastWeekEnd', LastWeekEnd);
     return eachDayOfInterval({
       start: firstWeekStart,
       end: LastWeekEnd,

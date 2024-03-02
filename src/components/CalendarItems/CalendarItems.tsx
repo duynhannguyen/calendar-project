@@ -1,3 +1,5 @@
+import { endOfDay, isBefore, isSameMonth, isToday } from 'date-fns';
+import { cc } from '../../utils/cc';
 import { formatDate } from '../../utils/formatDate';
 import './CalendarItems.css';
 type CalendarItemsProps = {
@@ -11,10 +13,19 @@ const CalendarItems = ({
   selectedMonth,
 }: CalendarItemsProps) => {
   return (
-    <div className="calendar-items">
+    <div
+      className={cc(
+        'calendar-items',
+        !isSameMonth(day, selectedMonth) && 'not-month-day',
+        isBefore(endOfDay(day), new Date()) && 'old-month-day'
+      )}
+    >
       <div className="button-add">+</div>
       {showWeekName ? <div>{formatDate(day, { weekday: 'short' })}</div> : null}
-      <div>{formatDate(day, { day: 'numeric' })}</div>
+
+      <div className={cc(isToday(day) && 'today')}>
+        {formatDate(day, { day: 'numeric' })}
+      </div>
     </div>
   );
 };
