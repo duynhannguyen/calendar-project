@@ -1,22 +1,36 @@
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { MdArrowForwardIos } from 'react-icons/md';
 import './CalendarHeader.css';
-function CalendarHeader() {
+import { addMonths, subMonths } from 'date-fns';
+import { formatDate } from '../../utils/formatDate';
+type CalendarHeaderProps = {
+  showToDay: (date: Date | ((m: Date) => Date)) => void;
+  selectedMonth: Date;
+};
+function CalendarHeader({ showToDay, selectedMonth }: CalendarHeaderProps) {
   return (
     <header>
       <div className="header-layout">
-        <div className="today-button">
+        <button className="today-button" onClick={() => showToDay(new Date())}>
           <span> Today </span>
-        </div>
+        </button>
         <div>
-          <span className="arrows-container">
+          <button
+            className="arrows-container"
+            onClick={() => showToDay((m: Date) => subMonths(m, 1))}
+          >
             <MdArrowBackIosNew />
-          </span>{' '}
-          <span className="arrows-container">
+          </button>{' '}
+          <button
+            className="arrows-container"
+            onClick={() => showToDay((m: Date) => addMonths(m, 1))}
+          >
             <MdArrowForwardIos />
-          </span>
+          </button>
         </div>
-        <div className="current-month">June 2024</div>
+        <div className="current-month">
+          {formatDate(selectedMonth, { month: 'long', year: 'numeric' })}
+        </div>
       </div>
     </header>
   );

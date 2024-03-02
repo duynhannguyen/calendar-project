@@ -25,7 +25,10 @@ const Calendar = () => {
   console.log(calendarDays);
   return (
     <div>
-      <CalendarHeader />
+      <CalendarHeader
+        showToDay={setSelectedMonth}
+        selectedMonth={selectedMonth}
+      />
       <div className="calendar-container">
         {calendarDays.map((day, index) => (
           <CalendarItems

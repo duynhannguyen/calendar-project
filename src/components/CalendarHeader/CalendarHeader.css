@@ -9,13 +9,15 @@ header {
   align-items: center;
 }
 .today-button {
+  background: none;
   border: 1px solid rgb(167, 163, 163);
   border-radius: 4px;
   padding: 10px 24px;
+  cursor: pointer;
 }
 .today-button:hover {
   background-color: rgb(205, 204, 204);
-  transition: ease-in;
+  transition: ease;
   transition-duration: 0.5s;
 }
 .current-month {
@@ -23,9 +25,11 @@ header {
   font-size: 20px;
 }
 .arrows-container {
+  background: none;
   border: 1px solid transparent;
   border-radius: 100%;
   padding: 8px;
+  cursor: pointer;
 }
 .arrows-container:hover {
   background-color: rgb(205, 204, 204);
