@@ -2,15 +2,21 @@ import { endOfDay, isBefore, isSameMonth, isToday } from 'date-fns';
 import { cc } from '../../utils/cc';
 import { formatDate } from '../../utils/formatDate';
 import './CalendarItems.css';
+import { Dispatch, SetStateAction } from 'react';
+import { UnionOmit } from '../../utils/types';
 type CalendarItemsProps = {
   day: Date;
   showWeekName: boolean;
   selectedMonth: Date;
+  setIsFormModalOpen: Dispatch<SetStateAction<boolean>>;
+  isFormModalOpen: boolean;
+  addEvent: (event: UnionOmit<Event, 'id'>) => void;
 };
 const CalendarItems = ({
   day,
   showWeekName,
   selectedMonth,
+  setIsFormModalOpen,
 }: CalendarItemsProps) => {
   return (
     <div
@@ -20,7 +26,9 @@ const CalendarItems = ({
         isBefore(endOfDay(day), new Date()) && 'old-month-day'
       )}
     >
-      <div className="button-add">+</div>
+      <button className="button-add" onClick={() => setIsFormModalOpen(true)}>
+        +
+      </button>
       {showWeekName ? <div>{formatDate(day, { weekday: 'short' })}</div> : null}
 
       <div className={cc(isToday(day) && 'today')}>

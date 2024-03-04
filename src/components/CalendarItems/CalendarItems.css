@@ -35,4 +35,6 @@
   font-size: 20px;
   visibility: hidden;
   cursor: pointer;
+  background: none;
+  border: none;
 }
