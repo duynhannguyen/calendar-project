@@ -13,20 +13,18 @@ import EventFormModal from '../EventFormModal/EventFormModal';
 // import { UseEvents } from '../../hooks/useEvents';
 const Calendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
+  const [getDate, setGetDate] = useState(new Date());
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   // const { addEvent } = UseEvents();
 
   const calendarDays = useMemo(() => {
     const firstWeekStart = startOfWeek(startOfMonth(selectedMonth));
     const LastWeekEnd = endOfWeek(endOfMonth(selectedMonth));
-    console.log('firstWeekStart', firstWeekStart);
-    console.log('LastWeekEnd', LastWeekEnd);
     return eachDayOfInterval({
       start: firstWeekStart,
       end: LastWeekEnd,
     });
   }, [selectedMonth]);
-  console.log(calendarDays);
   return (
     <div>
       <CalendarHeader
@@ -42,12 +40,13 @@ const Calendar = () => {
             selectedMonth={selectedMonth}
             setIsFormModalOpen={setIsFormModalOpen}
             isFormModalOpen={isFormModalOpen}
+            setGetDate={setGetDate}
             addEvent={() => null}
           />
         ))}
       </div>
       <EventFormModal
-        date={selectedMonth}
+        date={getDate}
         isOpen={isFormModalOpen}
         onSubmit={() => null}
         onClose={() => setIsFormModalOpen(false)}

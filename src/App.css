@@ -12,3 +12,8 @@
   --border-size: 1px;
   --day-padding: 0.25rem;
 }
+#root {
+  height: 100vh;
+  max-width: 1500px;
+  margin: 0 auto;
+}

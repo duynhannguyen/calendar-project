@@ -9,6 +9,7 @@ type CalendarItemsProps = {
   showWeekName: boolean;
   selectedMonth: Date;
   setIsFormModalOpen: Dispatch<SetStateAction<boolean>>;
+  setGetDate: Dispatch<SetStateAction<Date>>;
   isFormModalOpen: boolean;
   addEvent: (event: UnionOmit<Event, 'id'>) => void;
 };
@@ -17,6 +18,7 @@ const CalendarItems = ({
   showWeekName,
   selectedMonth,
   setIsFormModalOpen,
+  setGetDate,
 }: CalendarItemsProps) => {
   return (
     <div
@@ -26,7 +28,12 @@ const CalendarItems = ({
         isBefore(endOfDay(day), new Date()) && 'old-month-day'
       )}
     >
-      <button className="button-add" onClick={() => setIsFormModalOpen(true)}>
+      <button
+        className="button-add"
+        onClick={() => {
+          setIsFormModalOpen(true), setGetDate(day);
+        }}
+      >
         +
       </button>
       {showWeekName ? <div>{formatDate(day, { weekday: 'short' })}</div> : null}
