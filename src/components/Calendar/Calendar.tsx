@@ -1,22 +1,22 @@
-import CalendarHeader from '../CalendarHeader/CalendarHeader';
-import CalendarItems from '../CalendarItems/CalendarItems';
+import CalendarHeader from "../CalendarHeader/CalendarHeader";
+import CalendarItems from "../CalendarItems/CalendarItems";
 import {
   startOfWeek,
   startOfMonth,
   endOfWeek,
   endOfMonth,
   eachDayOfInterval,
-} from 'date-fns';
-import { useMemo, useState } from 'react';
-import './Calendar.css';
-import EventFormModal from '../EventFormModal/EventFormModal';
-// import { UseEvents } from '../../hooks/useEvents';
+  isSameDay,
+} from "date-fns";
+import { useMemo, useState } from "react";
+import "./Calendar.css";
+import EventFormModal from "../EventFormModal/EventFormModal";
+import { UseEvents } from "../../hooks/useEvents";
 const Calendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
   const [getDate, setGetDate] = useState(new Date());
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
-  // const { addEvent } = UseEvents();
-
+  const { events, addEvent } = UseEvents();
   const calendarDays = useMemo(() => {
     const firstWeekStart = startOfWeek(startOfMonth(selectedMonth));
     const LastWeekEnd = endOfWeek(endOfMonth(selectedMonth));
@@ -42,13 +42,14 @@ const Calendar = () => {
             isFormModalOpen={isFormModalOpen}
             setGetDate={setGetDate}
             addEvent={() => null}
+            events={events.filter((event) => isSameDay(day, event.date))}
           />
         ))}
       </div>
       <EventFormModal
         date={getDate}
         isOpen={isFormModalOpen}
-        onSubmit={() => null}
+        onSubmit={addEvent}
         onClose={() => setIsFormModalOpen(false)}
       />
     </div>

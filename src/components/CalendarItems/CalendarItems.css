@@ -38,3 +38,67 @@
   background: none;
   border: none;
 }
+.events {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.event {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  padding: 0;
+}
+.event > * {
+  margin-right: 0.5rem;
+}
+
+.event > :last-child {
+  margin-right: 0;
+}
+
+.event-time {
+  color: #777;
+}
+
+.all-day-event {
+  color: white;
+  padding: 0.15rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.all-day-event .event-name {
+  overflow: hidden;
+}
+
+.color-dot {
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+}
+
+.color-dot.blue,
+.all-day-event.blue {
+  background-color: var(--blue-background);
+}
+
+.color-dot.red,
+.all-day-event.red {
+  background-color: var(--red-background);
+}
+
+.color-dot.green,
+.all-day-event.green {
+  background-color: var(--green-background);
+}

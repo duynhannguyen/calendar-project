@@ -63,6 +63,7 @@ const EventFormModal = ({
     }
     onSubmit(newEvent);
     modalProps.onClose();
+    console.log("submit");
   };
   return (
     <Modal {...modalProps}>
