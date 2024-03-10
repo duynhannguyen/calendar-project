@@ -1,6 +1,6 @@
-import { ReactNode, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import './Modal.css';
+import { ReactNode, useEffect } from "react";
+import { createPortal } from "react-dom";
+import "./Modal.css";
 export type ModalProps = {
   children: ReactNode;
   isOpen: boolean;
@@ -9,12 +9,12 @@ export type ModalProps = {
 const Modal = ({ children, isOpen, onClose }: ModalProps) => {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Espace') {
+      if (e.key === "Espace") {
         onClose();
       }
-      document.addEventListener('keydown', handler);
+      document.addEventListener("keydown", handler);
       return () => {
-        document.removeEventListener('keydown', handler);
+        document.removeEventListener("keydown", handler);
       };
     };
   }, [onClose]);
@@ -27,7 +27,7 @@ const Modal = ({ children, isOpen, onClose }: ModalProps) => {
       <div className="overlay" onClick={onClose} />
       <div className="modal-body"> {children}</div>
     </div>,
-    document.querySelector('#modal-container') as HTMLElement
+    document.querySelector("#modal-container") as HTMLElement
   );
 };
 

@@ -63,7 +63,7 @@ const CalendarItems = ({
       </div>
 
       {sortedEvent.map((event) => (
-        <div className="events">
+        <div key={event.id} className="events">
           <CalendarEvent key={event.id} event={event} />
         </div>
       ))}

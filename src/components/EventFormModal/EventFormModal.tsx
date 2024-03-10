@@ -63,7 +63,6 @@ const EventFormModal = ({
     }
     onSubmit(newEvent);
     modalProps.onClose();
-    console.log("submit");
   };
   return (
     <Modal {...modalProps}>
@@ -85,6 +84,7 @@ const EventFormModal = ({
               id={`${formId}-name`}
               ref={nameRef}
               defaultValue={event?.name}
+              autoFocus
             />
           </div>
           <div className="form-group checkbox">
