@@ -25,6 +25,7 @@ const Calendar = () => {
       end: LastWeekEnd,
     });
   }, [selectedMonth]);
+
   return (
     <div>
       <CalendarHeader

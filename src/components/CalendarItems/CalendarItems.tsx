@@ -2,9 +2,10 @@ import { endOfDay, isBefore, isSameMonth, isToday } from "date-fns";
 import { cc } from "../../utils/cc";
 import { formatDate } from "../../utils/formatDate";
 import "./CalendarItems.css";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 import { UnionOmit } from "../../utils/types";
 import { Event } from "../../context/Event";
+import CalendarEvent from "../CalendarEvent/CalendarEvent";
 type CalendarItemsProps = {
   day: Date;
   showWeekName: boolean;
@@ -23,6 +24,22 @@ const CalendarItems = ({
   setGetDate,
   events,
 }: CalendarItemsProps) => {
+  const sortedEvent = useMemo(() => {
+    const timeToNUmber = (time: string) => parseFloat(time.replace(":", "."));
+
+    return [...events].sort((a, b) => {
+      if (a.allDay && b.allDay) {
+        return 0;
+      } else if (a.allDay) {
+        return -1;
+      } else if (b.allDay) {
+        return 1;
+      } else {
+        return timeToNUmber(a.startTime) - timeToNUmber(b.startTime);
+      }
+    });
+  }, [events]);
+
   return (
     <div
       className={cc(
@@ -44,23 +61,12 @@ const CalendarItems = ({
       <div className={cc(isToday(day) && "today")}>
         {formatDate(day, { day: "numeric" })}
       </div>
-      {events.length > 0 && (
+
+      {sortedEvent.map((event) => (
         <div className="events">
-          <button className="all-day-event blue event">
-            <div className="event-name">Short</div>
-          </button>
-          <button className="all-day-event red event">
-            <div className="event-name">
-              Long Event Name That Just Keeps Going
-            </div>
-          </button>
-          <button className="event">
-            <div className="color-dot red" />
-            <div className="event-time">7am</div>
-            <div className="event-name">Event Name</div>
-          </button>
+          <CalendarEvent key={event.id} event={event} />
         </div>
-      )}
+      ))}
     </div>
   );
 };

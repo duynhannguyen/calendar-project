@@ -80,12 +80,18 @@ const EventFormModal = ({
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor={`${formId}-name`}>Name</label>
-            <input type="text" id={`${formId}-name`} ref={nameRef} />
+            <input
+              type="text"
+              id={`${formId}-name`}
+              ref={nameRef}
+              defaultValue={event?.name}
+            />
           </div>
           <div className="form-group checkbox">
             <input
               checked={isAllDay}
               onChange={(e) => setIsAllDay(e.target.checked)}
+              defaultChecked={event?.allDay}
               type="checkbox"
               id={`${formId}-all-day`}
             />
@@ -110,6 +116,7 @@ const EventFormModal = ({
                 min={startTime}
                 type="time"
                 id={`${formId}-end-time`}
+                defaultValue={event?.endTime}
                 required={!isAllDay}
                 disabled={isAllDay}
               />
