@@ -16,6 +16,7 @@ const CalendarEvent = ({ event }: CalendarEventProps) => {
   return (
     <>
       <button
+        type="button"
         className={cc("event", event.color, event.allDay && "all-day-event")}
         onClick={() => setIsEdit(true)}
       >

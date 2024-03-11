@@ -45,10 +45,12 @@ const CalendarItems = ({
       className={cc(
         "calendar-items",
         !isSameMonth(day, selectedMonth) && "not-month-day",
-        isBefore(endOfDay(day), new Date()) && "old-month-day"
+        isBefore(endOfDay(day), new Date()) && "old-month-day",
+        events.length > 3 && "scrolling"
       )}
     >
       <button
+        type="button"
         className="button-add"
         onClick={() => {
           setIsFormModalOpen(true), setGetDate(day);

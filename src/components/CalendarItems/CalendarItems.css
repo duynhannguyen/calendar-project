@@ -6,6 +6,10 @@
   text-align: center;
   position: relative;
 }
+.scrolling {
+  overflow-y: scroll;
+}
+
 .not-month-day {
   background-color: rgb(245, 243, 243);
   color: rgb(129, 129, 129, 0.4);
@@ -46,6 +50,7 @@
   flex-grow: 1;
   overflow: hidden;
 }
+
 .event {
   display: flex;
   align-items: center;
@@ -58,6 +63,10 @@
   border: none;
   font-size: 1rem;
   padding: 0;
+}
+.event:hover {
+  white-space: normal;
+  overflow: visible;
 }
 .event > * {
   margin-right: 0.5rem;

@@ -89,7 +89,6 @@ const EventFormModal = ({
           </div>
           <div className="form-group checkbox">
             <input
-              checked={isAllDay}
               onChange={(e) => setIsAllDay(e.target.checked)}
               defaultChecked={event?.allDay}
               type="checkbox"
